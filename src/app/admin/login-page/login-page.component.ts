@@ -12,6 +12,7 @@ import { AuthService } from '../shared/services/auth.service';
 export class LoginPageComponent implements OnInit {
 
   form: any = '';
+  submited: boolean = false;
 
   constructor(
     private auth: AuthService,
@@ -28,16 +29,23 @@ export class LoginPageComponent implements OnInit {
   }
 
   submit() {
-    if (this.form) {
-      if (this.form.invalid) {
-        return
-      }
-
-      const user: User = {
-        email: this.form.value.email,
-        password: this.form.value.password
-      }
+    if (this.form.invalid) {
+      return
     }
+
+    this.submited = true
+
+    const user: User = {
+      email: this.form.value.email,
+      password: this.form.value.password,
+      returnSecureToken: true
+    }
+
+    this.auth.login(user).subscribe(() => {
+      this.form.reset()
+      this.submited = false
+      this.router.navigate(['/admin', 'dashboard'])
+    })
   }
 
 }

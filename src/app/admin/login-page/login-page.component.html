@@ -24,5 +24,5 @@
         </div>
     </div>
 
-    <button [disabled]="form.invalid" type="submit"class="btn btn-primary">Войти</button>
+    <button [disabled]="form.invalid || submited" type="submit"class="btn btn-primary">Войти</button>
 </form>
