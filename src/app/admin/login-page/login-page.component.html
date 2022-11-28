@@ -1,0 +1,28 @@
+<form class="card" [formGroup]="form" (ngSubmit)="submit()">
+    <h1>Войти в панель администратора</h1>
+
+    <div [ngClass]="{invalid: form.get('email')?.touched && form.get('email')?.invalid}" class="form-control">
+        <label for="email">Email:</label>
+        <input formControlName="email"  id="email" type="email">
+        <div *ngIf="form.get('email').touched && form.get('email').invalid" class="validation">
+            <small *ngIf="form.get('email').errors.required">Введите поля email</small>
+        </div>
+        <div *ngIf="form.get('email').touched && form.get('email').invalid" class="validation">
+            <small *ngIf="form.get('email').errors.email">Поля email должно быть email</small>
+        </div>
+    </div>
+    <div  [ngClass]="{invalid: form.get('password')?.touched && form.get('password')?.invalid}" class="form-control">
+        <label for="password">Пароль:</label>
+        <input formControlName="password" id="password" type="password">
+        <div *ngIf="form.get('password')?.touched && form.get('password')?.invalid" class="validation">
+            <small *ngIf="form.get('password').errors.required">Введите поля password</small>
+            <small *ngIf="form.get('password').errors.minlength">
+                Пароль должен быть не менее {{form.get('password').errors.minlength.requiredLength}} символов. 
+                Сейчас он {{form.get('password').errors.minlength.actualLength}} символов
+
+            </small>
+        </div>
+    </div>
+
+    <button [disabled]="form.invalid" type="submit"class="btn btn-primary">Войти</button>
+</form>
