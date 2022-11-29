@@ -1,6 +1,13 @@
 <form class="card" [formGroup]="form" (ngSubmit)="submit()">
     <h1>Войти в панель администратора</h1>
 
+    <div class="alert alert-danger" *ngIf="auth.error$ | async as error">
+        {{ error }}
+    </div>
+    <div class="alert alert-info" *ngIf="message as error">
+        {{ error }}
+    </div>
+
     <div [ngClass]="{invalid: form.get('email')?.touched && form.get('email')?.invalid}" class="form-control">
         <label for="email">Email:</label>
         <input formControlName="email"  id="email" type="email">
