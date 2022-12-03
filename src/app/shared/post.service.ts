@@ -4,7 +4,7 @@ import { map, Observable } from "rxjs";
 import { environment } from "src/environments/environment";
 import { FbCreateResponse, Post } from "./interfaces";
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 
 
 export class PostService {
@@ -23,9 +23,9 @@ export class PostService {
             }))
     }
 
-    getAll():Observable<Post[]>  {
+    getAll(): Observable<Post[]> {
         return this.http.get(`${environment.fbDbUrl}/posts.json`)
-            .pipe(map((response: {[key: string]: any}) => {
+            .pipe(map((response: { [key: string]: any }) => {
                 return Object
                     .keys(response)
                     .map(key => ({
@@ -33,11 +33,28 @@ export class PostService {
                         id: key,
                         date: new Date(response[key].date)
                     }))
-                
+
             }))
+    }
+
+    getById(id: string): Observable<Post> {
+        return this.http.get<Post>(`${environment.fbDbUrl}/posts/${id}.json`)
+            .pipe(map((post: any) => {
+                return {
+                    ...post,
+                    id,
+                    date: new Date(post.date)
+                }
+            }))
+
+    }
+
+    update(post: any): Observable<Post> {
+        return this.http.patch<Post>(`${environment.fbDbUrl}/posts/${post.id}.json`, post)
     }
 
     remove(id: string): Observable<void> {
         return this.http.delete<void>(`${environment.fbDbUrl}/posts/${id}.json`)
     }
+
 }
