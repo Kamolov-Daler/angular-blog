@@ -1,3 +1,4 @@
+
 <div *ngIf="posts.length; else  loading">
     <div class="form-control">
         <input type="text" placeholder="Найти пост..." [(ngModel)]="searchStr">
@@ -17,7 +18,7 @@
                 <td>{{idx + 1}}</td>
                 <td>{{ post.author }}</td>
                 <td>{{post.title}}</td>
-                <td>{{post.date | date:'medium'}}</td>
+                <td>{{post.date | date:'medium':'': 'ru'}}</td>
                 <td>
                     <button class="btn btn-link open" [routerLink]="['/admin', 'post', post.id, 'edit']">
                         Открыть
