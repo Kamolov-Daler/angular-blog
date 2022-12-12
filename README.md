@@ -3,8 +3,8 @@
 # Routes 
 
 ## client
-/
-/post/:id
+/ \n
+/post/:id \n
 
 ## admin
 /admin/login
