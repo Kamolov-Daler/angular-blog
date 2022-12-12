@@ -1,3 +1,21 @@
+# [Deploy URL](https://angular-blog-2adee.web.app/)
+
+# Routes 
+
+## client
+/
+/post/:id
+
+## admin
+/admin/login
+/admin/dashboard
+/admin/create
+/admin/post/:id/edit
+
+Login: daler@mail.ru
+Password: 907074211
+________________________________________________________________________________________________________________________________________________________
+
 # AngularBlog
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4.
