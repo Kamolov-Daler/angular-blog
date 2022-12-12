@@ -3,17 +3,17 @@
 # Routes 
 
 ## client
-/ \n
-/post/:id \n
+### /  
+### /post/:id
 
 ## admin
-/admin/login
-/admin/dashboard
-/admin/create
-/admin/post/:id/edit
+### /admin/login
+### /admin/dashboard
+### /admin/create
+### /admin/post/:id/edit
 
-Login: daler@mail.ru
-Password: 907074211
+### Login: daler@mail.ru
+### Password: 907074211
 ________________________________________________________________________________________________________________________________________________________
 
 # AngularBlog
